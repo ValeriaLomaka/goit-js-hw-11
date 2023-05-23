@@ -61,8 +61,19 @@ button{
     border-radius: 5px;
 }
 
+.load-more{
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+}
+
 input{
     height: 28px;
     border-color: #ececec;
     border-radius: 5px;
+}
+
+.js-load-more.is-hidden {
+  display: none;
 }
