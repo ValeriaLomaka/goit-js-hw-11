@@ -126,3 +126,13 @@ function notFound() {
 function totalFound(totalHits) {
   return Notify.success(`Hooray! We found ${totalHits} images.`);
 }
+
+window.addEventListener('scroll', function () {
+  const button = document.querySelector('.back-to-top');
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    button.classList.add('show');
+  } else {
+    button.classList.remove('show');
+  }
+});
+
