@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -7,16 +6,12 @@ import { Notify } from 'notiflix';
 const searchForm = document.querySelector('#search-form');
 const galleryList = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.js-load-more');
-
-
 const API_KEY = '36648365-1842e8a4007d2e95d6a089902';
-const URL =
-  'https://pixabay.com/api/?image_type=photo&orientation=horizontal&safesearch=true';
-
+const URL ='https://pixabay.com/api/?image_type=photo&orientation=horizontal&safesearch=true';
 let page = '';
 let value = '';
 
-searchForm.addEventListener('submit', submitForm);
+searchForm.addEventListener('submit', onSubmit);
 loadMoreBtn.addEventListener('click', clickLoadMore);
 
 let gallery = new SimpleLightbox('.gallery-item', {
@@ -24,13 +19,10 @@ let gallery = new SimpleLightbox('.gallery-item', {
   captionDelay: 250,
 });
 
-function submitForm(e) {
+function onSubmit(e) {
   e.preventDefault();
-
   galleryList.innerHTML = '';
-
   value = e.target.elements.searchQuery.value.trim();
-
   page = 1;
   if (value === '') {
     Notify.warning('Write something for search!');
@@ -59,10 +51,6 @@ function submitForm(e) {
 function clickLoadMore(e) {
   fetchPhotos(value)
     .then(({ hits, totalHits }) => {
-      console.log(hits);
-      console.log(totalHits);
-      console.log(page);
-
       if (page * 40 >= totalHits) {
         loadMoreBtn.classList.add('is-hidden');
         Notify.warning(
