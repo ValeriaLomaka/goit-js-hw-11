@@ -95,7 +95,7 @@ img{
   gap: 20px;
 }
 
-ul{
+.info{
   list-style: none;
   display: flex;
   margin-top: 10px;
